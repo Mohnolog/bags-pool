@@ -295,59 +295,81 @@ app.post("/collection/create", async (req, res) => {
 
 app.get("/collection", async (req, res) => {
   try {
-    const { a, b, c, d, e, f, g, h, i, j } = req.query;
+    let filters = {};
+
+    // const { a, b, c, d, e, f, g, h, i, j } = req.query;
     const collectionToUpdate = await Collection.find();
 
     const weight = collectionToUpdate.weight;
     for (k = 0; k < weight.length; k++) {
-      if (weight[k].a) {
-        if (req.body.a) {
-          weight[k].a = req.body.a;
+      if (weight[k].a || weight[k].a === null) {
+        if (a) {
+          weight[k].a = a;
+        } else {
+          weight[k].a = null;
         }
       }
-      if (weight[k].b) {
+      if (weight[k].b || weight[k].b === null) {
         if (b) {
           weight[k].b = b;
+        } else {
+          weight[k].b = null;
         }
       }
-      if (weight[k].c) {
+      if (weight[k].c || weight[k].c === null) {
         if (c) {
           weight[k].c = c;
+        } else {
+          weight[k].c = null;
         }
       }
-      if (weight[k].d) {
+      if (weight[k].d || weight[k].d === null) {
         if (d) {
           weight[k].d = d;
+        } else {
+          weight[k].d = null;
         }
       }
-      if (weight[k].e) {
+      if (weight[k].e || weight[k].e === null) {
         if (e) {
           weight[k].e = e;
+        } else {
+          weight[k].e = null;
         }
       }
-      if (weight[k].f) {
+      if (weight[k].f || weight[k].f === null) {
         if (f) {
           weight[k].f = f;
+        } else {
+          weight[k].f = null;
         }
       }
-      if (weight[k].g) {
+      if (weight[k].g || weight[k].g === null) {
         if (g) {
           weight[k].g = g;
+        } else {
+          weight[k].g = null;
         }
       }
-      if (weight[k].h) {
+      if (weight[k].h || weight[k].h === null) {
         if (h) {
           weight[k].h = h;
+        } else {
+          weight[k].h = null;
         }
       }
-      if (weight[k].i) {
+      if (weight[k].i || weight[k].i === null) {
         if (i) {
           weight[k].i = i;
+        } else {
+          weight[k].i = null;
         }
       }
-      if (weight[k].j) {
+      if (weight[k].j || weight[k].j === null) {
         if (j) {
           weight[k].j = j;
+        } else {
+          weight[k].j = null;
         }
       }
     }
@@ -618,74 +640,74 @@ app.put("/collection/update/:id", async (req, res) => {
 
     const weight = collectionToUpdate.weight;
     for (k = 0; k < weight.length; k++) {
-      if (weight[k].a) {
-        if (req.body.a) {
-          weight[k].a = req.body.a;
-          // const a = req.body.a;
-          // return a;
+      if (weight[k].a || weight[k].a === null) {
+        if (a) {
+          weight[k].a = a;
+        } else {
+          weight[k].a = null;
         }
       }
-      if (weight[k].b) {
+      if (weight[k].b || weight[k].b === null) {
         if (b) {
           weight[k].b = b;
-          // const b = req.body.b;
-          // return b;
+        } else {
+          weight[k].b = null;
         }
       }
-      if (weight[k].c) {
+      if (weight[k].c || weight[k].c === null) {
         if (c) {
           weight[k].c = c;
-          // const c = req.body.c;
-          // return c;
+        } else {
+          weight[k].c = null;
         }
       }
-      if (weight[k].d) {
+      if (weight[k].d || weight[k].d === null) {
         if (d) {
           weight[k].d = d;
-          // const d = req.body.d;
-          // return d;
+        } else {
+          weight[k].d = null;
         }
       }
-      if (weight[k].e) {
+      if (weight[k].e || weight[k].e === null) {
         if (e) {
           weight[k].e = e;
-          // const e = req.body.e;
-          // return e;
+        } else {
+          weight[k].e = null;
         }
       }
-      if (weight[k].f) {
+      if (weight[k].f || weight[k].f === null) {
         if (f) {
           weight[k].f = f;
-          // const f = req.body.f;
-          // return f;
+        } else {
+          weight[k].f = null;
         }
       }
-      if (weight[k].g) {
+      if (weight[k].g || weight[k].g === null) {
         if (g) {
           weight[k].g = g;
-          // const g = req.body.g;
-          // return g;
+        } else {
+          weight[k].g = null;
         }
       }
-      if (weight[k].h) {
+      if (weight[k].h || weight[k].h === null) {
         if (h) {
           weight[k].h = h;
-          // const h = req.body.h;
-          // return h;
+        } else {
+          weight[k].h = null;
         }
       }
-      if (weight[k].i) {
+      if (weight[k].i || weight[k].i === null) {
         if (i) {
           weight[k].i = i;
-          // const i = req.body.i;
-          // return i;
+        } else {
+          weight[k].i = null;
         }
       }
-      if (weight[k].j) {
+      if (weight[k].j || weight[k].j === null) {
         if (j) {
           weight[k].j = j;
-          // const j = req.body.j;
-          // return j;
+        } else {
+          weight[k].j = null;
         }
       }
     }

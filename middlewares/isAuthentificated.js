@@ -9,7 +9,7 @@ const isAuthentificated = async (req, res, next) => {
     );
     if (existingUser) {
       req.user = existingUser;
-      return next;
+      return next();
     } else {
       res.status(401).json({ Error: "unauthorized" });
     }

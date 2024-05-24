@@ -13,7 +13,7 @@ const convertToBase64 = require("../tools/convertedToBase64");
 const cloudinary = require("cloudinary").v2;
 
 const User = require("../models/User");
-const Offer = require("../models/Collection");
+const Collection = require("../models/Collection");
 
 router.post("/user/signup", fileUpload(), async (req, res) => {
   try {

@@ -7,10 +7,9 @@ const Collection = require("../models/Collection");
 
 router.get("/collection", isAuthentificated, async (req, res) => {
   try {
-    let filters = {};
+    const { a, b, c, d, e, f, g, h, i, j } = req.query;
 
-    // const { a, b, c, d, e, f, g, h, i, j } = req.query;
-    const collectionToUpdate = await Collection.find();
+    const collectionToUpdate = await Collection.findById(req.body.collectionId);
 
     const weight = collectionToUpdate.weight;
     for (k = 0; k < weight.length; k++) {

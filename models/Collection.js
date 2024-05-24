@@ -5,6 +5,10 @@ const Collection = mongoose.model("bag", {
   price: Array,
   weight: Array,
   date: Date,
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
 });
 
 module.exports = Collection;

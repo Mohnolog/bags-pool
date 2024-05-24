@@ -8,7 +8,7 @@ const encBase64 = require("crypto-js/enc-base64");
 // Middleware permettant de recevoir des formData
 const fileUpload = require("express-fileupload");
 // Fonction permettant de transformer un Buffer en Base64
-const convertToBase64 = require("../tools/convertToBase64");
+const convertToBase64 = require("../tools/convertedToBase64");
 // Import du package cloudinary
 const cloudinary = require("cloudinary").v2;
 

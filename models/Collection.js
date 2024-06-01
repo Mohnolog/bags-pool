@@ -9,6 +9,7 @@ const Collection = mongoose.model("bag", {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
+  weightExcess: Array,
 });
 
 module.exports = Collection;

@@ -19,14 +19,16 @@ cloudinary.config({
 const userRoutes = require("./routes/user");
 const collectionToUpdateRoutes = require("./routes/collection-update");
 const collectionToCreateRoutes = require("./routes/collection-create");
-const collectionFiltersRoutes = require("./routes/collection-filters");
+const excessFiltersRoutes = require("./routes/excess-filters");
 const excessToCreateRoutes = require("./routes/excess-create");
+const excessToUpdateRoutes = require("./routes/excess-update");
 
-app.use(collectionFiltersRoutes);
+app.use(excessFiltersRoutes);
 app.use(collectionToCreateRoutes);
 app.use(collectionToUpdateRoutes);
 app.use(userRoutes);
 app.use(excessToCreateRoutes);
+app.use(excessToUpdateRoutes);
 
 app.get("/", (req, res) => {
   res.status(201).json({

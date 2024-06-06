@@ -12,7 +12,7 @@ router.post(
   isAuthentificated,
   async (req, res) => {
     try {
-      const { a, b, c, d, e, f, g, h, i, j } = req.body;
+      const { a, b, c, d, e, f, g, h, i, j } = req.body.weight;
 
       let price = 0;
 

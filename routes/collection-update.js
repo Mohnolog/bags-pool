@@ -12,7 +12,7 @@ router.put("/collection/update/:id", isAuthentificated, async (req, res) => {
 
     const weight = collectionToUpdate.weight;
     for (k = 0; k < weight.length; k++) {
-      if (weight[k].a || weight[k].a === null) {
+      if (weight[k].a || weight[k].b === null) {
         if (a) {
           weight[k].a = a;
         } else {

@@ -16,63 +16,63 @@ router.post(
 
       const newCollection = new Collection({
         weight: [],
+        freeAllowance: [],
         date: new Date(),
         owner: req.user,
-        freeAllowance: [],
       });
 
       const weight = newCollection.weight;
       if (!a) {
-        weight.push({ a: null });
+        weight.push(null);
       } else {
-        weight.push({ a });
+        weight.push(a);
       }
 
       if (!b) {
-        weight.push({ b: null });
+        weight.push(null);
       } else {
-        weight.push({ b });
+        weight.push(b);
       }
 
       if (!c) {
-        weight.push({ c: null });
+        weight.push(null);
       } else {
-        weight.push({ c });
+        weight.push(c);
       }
       if (!d) {
-        weight.push({ d: null });
+        weight.push(null);
       } else {
-        weight.push({ d });
+        weight.push(d);
       }
       if (!e) {
-        weight.push({ e: null });
+        weight.push(null);
       } else {
-        weight.push({ e });
+        weight.push(e);
       }
       if (!f) {
-        weight.push({ f: null });
+        weight.push(null);
       } else {
-        weight.push({ f });
+        weight.push(f);
       }
       if (!g) {
-        weight.push({ g: null });
+        weight.push(null);
       } else {
-        weight.push({ g });
+        weight.push(g);
       }
       if (!h) {
-        weight.push({ h: null });
+        weight.push(null);
       } else {
-        weight.push({ h });
+        weight.push(h);
       }
       if (!i) {
-        weight.push({ i: null });
+        weight.push(null);
       } else {
-        weight.push({ i });
+        weight.push(i);
       }
       if (!j) {
-        weight.push({ j: null });
+        weight.push(null);
       } else {
-        weight.push({ j });
+        weight.push(j);
       }
 
       let yBags = 0;
@@ -82,7 +82,7 @@ router.post(
           yBags++;
         }
       }
-      // console.log(yBags);
+      console.log(yBags);
       newCollection.yBags.push(yBags);
 
       const { l, m, n, o, p, q, r, s, t, u } = req.body.freeAllowance;
@@ -137,6 +137,7 @@ router.post(
       } else {
         freeAllowance.push(u);
       }
+
       let businessWeight = 0;
       let jBags = 0;
       const freeWeight = 32;

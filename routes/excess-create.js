@@ -76,13 +76,16 @@ router.post(
       }
 
       let yBags = 0;
+      let overAllNonJWeight = 0;
       const bagsCount = Object.keys(req.body.weight);
       for (let k = 0; k < bagsCount.length; k++) {
         if (req.body.weight[bagsCount[k]]) {
           yBags++;
+          overAllNonJWeight = overAllNonJWeight + req.body.weight[bagsCount[k]];
         }
       }
-      console.log(yBags);
+      // console.log(yBags);
+      // console.log(overAllNonJWeight);
       newCollection.yBags.push(yBags);
 
       const { l, m, n, o, p, q, r, s, t, u } = req.body.freeAllowance;
@@ -138,61 +141,50 @@ router.post(
         freeAllowance.push(u);
       }
 
-      let businessWeight = 0;
+      let overAllJWeight = 0;
       let jBags = 0;
       const freeWeight = 32;
       const allowanceObjet = Object.keys(req.body.freeAllowance);
       for (let k = 0; k < allowanceObjet.length; k++) {
         if (allowanceObjet[k]) {
           jBags++;
-          businessWeight =
-            businessWeight + req.body.freeAllowance[allowanceObjet[k]];
+          overAllJWeight =
+            overAllJWeight + req.body.freeAllowance[allowanceObjet[k]];
         }
       }
 
       // console.log(jBags);
       newCollection.jBags.push(jBags);
 
-      // console.log(businessWeight);
+      // console.log(overAllJWeight);
 
       let additionalAllowance;
-      additionalAllowance = jBags * freeWeight - businessWeight;
+      additionalAllowance = jBags * freeWeight - overAllJWeight;
       // console.log(additionalAllowance);
 
       let allowance = [46, 69, 92, 115, 138, 161, 184, 207, 230];
       let weightExcess = 0;
 
-      if (a && b && !c && !d && !e && !f && !g && !h && !i && !j) {
-        weightExcess = allowance[0] - (a + b) + additionalAllowance;
-      } else if (a && b && c && !d && !e && !f && !g && !h && !i && !j) {
-        weightExcess = allowance[1] - (a + b + c) + additionalAllowance;
-      } else if (a && b && c && d && !e && !f && !g && !h && !i && !j) {
-        weightExcess = allowance[2] - (a + b + c + d) + additionalAllowance;
-      } else if (a && b && c && d && e && !f && !g && !h && !i && !j) {
-        weightExcess = allowance[3] - (a + b + c + d + e) + additionalAllowance;
-      } else if (a && b && c && d && e && f && !g && !h && !i && !j) {
-        weightExcess =
-          allowance[4] - (a + b + c + d + e + f) + additionalAllowance;
-      } else if (a && b && c && d && e && f && g && !h && !i && !j) {
-        weightExcess =
-          allowance[5] - (a + b + c + d + e + f + g) + additionalAllowance;
-      } else if (a && b && c && d && e && f && g && h && !i && !j) {
-        weightExcess =
-          allowance[6] - (a + b + c + d + e + f + g + h) + additionalAllowance;
-      } else if (a && b && c && d && e && f && g && h && i && !j) {
-        weightExcess =
-          allowance[7] -
-          (a + b + c + d + e + f + g + h + i) +
-          additionalAllowance;
-      } else if (a && b && c && d && e && f && g && h && i && j) {
-        weightExcess =
-          allowance[8] -
-          (a + b + c + d + e + f + g + h + i + j) +
-          additionalAllowance;
+      if (yBags === 2) {
+        weightExcess = allowance[0] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 3) {
+        weightExcess = allowance[1] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 4) {
+        weightExcess = allowance[2] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 5) {
+        weightExcess = allowance[3] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 6) {
+        weightExcess = allowance[4] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 7) {
+        weightExcess = allowance[5] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 8) {
+        weightExcess = allowance[6] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 9) {
+        weightExcess = allowance[7] - overAllNonJWeight + additionalAllowance;
+      } else if (yBags === 10) {
+        weightExcess = allowance[8] - overAllNonJWeight + additionalAllowance;
       }
 
-      newCollection.weightExcess.push(weightExcess);
-      // console.log(weightExcess);
       let priceParameters = [
         0, 125, 250, 375, 500, 625, 750, 875, 1000, 1125, 1250,
       ];
@@ -256,6 +248,14 @@ router.post(
         console.log("unauthorized");
       }
       newCollection.price.push(price);
+
+      if (weightExcess < 0) {
+        weightExcess = weightExcess * -1;
+        newCollection.weightExcess.push(weightExcess);
+      } else {
+        newCollection.weightExcess.push(`${weightExcess} kg available`);
+      }
+      // console.log(weightExcess);
 
       await newCollection.save();
 

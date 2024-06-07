@@ -1,6 +1,6 @@
-node_modules
-package-lock.json
-test.js
-.env
-collection-create.js
-collection-update.js
+node_modules/
+package-lock.json/
+test.js/
+.env/
+collection-create.js/
+collection-update.js/
